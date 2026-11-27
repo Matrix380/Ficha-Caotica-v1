@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Caótico - Ficha de Personagem</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <!-- Cabeçalho do site -->
+    <header class="cabecalho">
+        <div class="marca">
+            <img src="imagens/logo-sistema-caotico.png" alt="Sistema Caótico">
+            <span>FICHA DE PERSONAGEM</span>
+        </div>
+
+        <div class="acoes-cabecalho">
+            <span class="estado-salvamento" id="estadoSalvamento">● Salvamento automático</span>
+            <button class="botao botao-discreto" id="botaoRestaurar" type="button">
+                ↺ Restaurar ficha
+            </button>
+        </div>
+    </header>
+
+    <main class="pagina">
+        <!-- Coluna da esquerda: personagem, atributos e vida -->
+        <aside class="barra-lateral">
+            <section class="cartao cartao-identidade">
+                <p class="titulo-pequeno">REGISTRO DO AVENTUREIRO</p>
+
+                <label class="rotulo" for="nomePersonagem">Nome do personagem</label>
+                <input class="campo nome-personagem" id="nomePersonagem"
+                       type="text" placeholder="Personagem sem nome">
+
+                <div class="campos-lado-a-lado">
+                    <div>
+                        <label class="rotulo" for="classePersonagem">Classe / origem</label>
+                        <input class="campo" id="classePersonagem" type="text"
+                               placeholder="Não definido">
+                    </div>
+                    <div>
+                        <label class="rotulo" for="nivelPersonagem">Nível</label>
+                        <input class="campo" id="nivelPersonagem" type="number"
+                               min="1" max="99" value="1">
+                    </div>
+                </div>
+
+                <label class="rotulo" for="conceitoPersonagem">Conceito</label>
+                <textarea class="campo" id="conceitoPersonagem" rows="3"
+                          placeholder="Uma breve descrição..."></textarea>
+            </section>
+
+            <section class="cartao">
+                <div class="titulo-cartao">
+                    <div>
+                        <p class="titulo-pequeno">ESSÊNCIA</p>
+                        <h2>Atributos</h2>
+                    </div>
+                    <span class="simbolo">✧</span>
+                </div>
+
+                <p class="explicacao">Altere os valores diretamente nos campos.</p>
+                <div class="lista-atributos" id="listaAtributos"></div>
+                <p class="ajuda">Fino e Bruto são valores independentes. Ajuste conforme as regras da sua mesa.</p>
+            </section>
+
+            <section class="cartao">
+                <div class="titulo-cartao">
+                    <div>
+                        <p class="titulo-pequeno">ESTADO VITAL</p>
+                        <h2>Pontos de vida</h2>
+                    </div>
+                    <span class="simbolo">✦</span>
+                </div>
+
+                <div class="numeros-vida">
+                    <div>
+                        <span class="rotulo">PV ATUAL</span>
+                        <strong id="vidaAtualTexto">91</strong>
+                    </div>
+                    <div>
+                        <span class="rotulo">PV MÁXIMO</span>
+                        <strong id="vidaMaximaTexto">91</strong>
+                    </div>
+                </div>
+
+                <div class="barra-vida">
+                    <div id="preenchimentoVida"></div>
+                </div>
+
+                <div class="campos-lado-a-lado">
+                    <div>
+                        <label class="rotulo" for="vidaAtual">Vida atual</label>
+                        <input class="campo" id="vidaAtual" type="number" min="0" value="91">
+                    </div>
+                    <div>
+                        <label class="rotulo" for="vidaMaxima">Vida máxima</label>
+                        <input class="campo" id="vidaMaxima" type="number" min="1" value="91">
+                    </div>
+                </div>
+
+                <div class="botoes-vida">
+                    <button class="botao botao-dano" id="botaoDano" type="button">− Receber dano</button>
+                    <button class="botao botao-cura" id="botaoCura" type="button">＋ Recuperar vida</button>
+                </div>
+            </section>
+
+            <p class="frase-lateral">O MUNDO NÃO É JUSTO.<br><span>CONSEQUENCIAS SÃO INEVITÁVEIS.</span></p>
+        </aside>
+
+        <!-- Coluna principal: inventário, habilidades, condições e anotações -->
+        <section class="conteudo-principal">
+            <div class="apresentacao">
+                <div>
+                    <p class="titulo-pequeno">FICHA PESSOAL / 020</p>
+                    <h1 id="tituloPersonagem">O DESCONHECIDO</h1>
+                    <p>Registre seus recursos. Tente sobreviver às consequências.</p>
+                </div>
+                <span class="simbolo-grande">♥</span>
+            </div>
+
+            <div class="grade-conteudo">
+                <section class="cartao">
+                    <div class="titulo-cartao">
+                        <div>
+                            <p class="titulo-pequeno">PERTENCES</p>
+                            <h2>Inventário</h2>
+                        </div>
+                        <span class="contador" id="contadorItens">0 ITENS</span>
+                    </div>
+
+                    <form class="formulario-adicionar" id="formularioItem">
+                        <input class="campo" id="nomeItem" type="text"
+                               placeholder="Nome do item..." required>
+                        <input class="campo campo-quantidade" id="quantidadeItem"
+                               type="number" min="1" value="1" aria-label="Quantidade">
+                        <button class="botao botao-principal" type="submit">＋ Adicionar</button>
+                    </form>
+                    <div class="lista-registros" id="listaInventario">Nenhum item registrado.</div>
+                </section>
+
+                <section class="cartao">
+                    <div class="titulo-cartao">
+                        <div>
+                            <p class="titulo-pequeno">MANIFESTAÇÕES</p>
+                            <h2>Habilidades</h2>
+                        </div>
+                        <span class="contador" id="contadorHabilidades">0 REGISTROS</span>
+                    </div>
+
+                    <form class="formulario-empilhado" id="formularioHabilidade">
+                        <input class="campo" id="nomeHabilidade" type="text"
+                               placeholder="Nome da habilidade..." required>
+                        <textarea class="campo" id="descricaoHabilidade" rows="2"
+                                  placeholder="Efeito, custo ou descrição..."></textarea>
+                        <button class="botao botao-principal" type="submit">＋ Registrar habilidade</button>
+                    </form>
+                    <div class="lista-registros" id="listaHabilidades">Nenhuma habilidade registrada.</div>
+                </section>
+
+                <section class="cartao">
+                    <div class="titulo-cartao">
+                        <div>
+                            <p class="titulo-pequeno">ANOMALIAS</p>
+                            <h2>Condições</h2>
+                        </div>
+                        <span class="contador" id="contadorCondicoes">0 ATIVAS</span>
+                    </div>
+
+                    <form class="formulario-adicionar" id="formularioCondicao">
+                        <input class="campo" id="nomeCondicao" type="text"
+                               placeholder="Ex.: Envenenado, Exausto..." required>
+                        <button class="botao botao-principal" type="submit">＋ Aplicar</button>
+                    </form>
+                    <div class="lista-condicoes" id="listaCondicoes">Nenhuma condição ativa.</div>
+                </section>
+
+                <section class="cartao cartao-anotacoes">
+                    <div class="titulo-cartao">
+                        <div>
+                            <p class="titulo-pequeno">MEMÓRIA FRAGMENTADA</p>
+                            <h2>Anotações</h2>
+                        </div>
+                        <span class="simbolo">⌁</span>
+                    </div>
+                    <textarea class="campo campo-anotacoes" id="anotacoes"
+                              placeholder="Anote pistas, objetivos, relações e acontecimentos..."></textarea>
+                </section>
+            </div>
+
+            <section class="cartao cartao-historico">
+                <div class="titulo-cartao">
+                    <div>
+                        <p class="titulo-pequeno">RASTROS DO DESTINO</p>
+                        <h2>Histórico</h2>
+                    </div>
+                    <button class="botao-texto" id="botaoLimparHistorico" type="button">
+                        Limpar histórico
+                    </button>
+                </div>
+                <div class="lista-historico" id="listaHistorico">Nenhuma alteração registrada ainda.</div>
+            </section>
+
+            <footer class="rodape">
+                SISTEMA CAÓTICO <span>✧</span> FICHA DIGITAL — DADOS SALVOS NESTE NAVEGADOR
+            </footer>
+        </section>
+    </main>
+
+    <!-- Janela usada para informar dano ou cura -->
+    <div class="fundo-janela" id="janelaVida">
+        <form class="janela cartao" id="formularioVida">
+            <button class="fechar-janela" id="botaoFecharJanela" type="button">×</button>
+            <p class="titulo-pequeno">ALTERAÇÃO VITAL</p>
+            <h2 id="tituloJanela">Receber dano</h2>
+            <label class="rotulo" for="quantidadeVida">Quantidade</label>
+            <input class="campo" id="quantidadeVida" type="number" min="1" value="1" required>
+            <button class="botao botao-principal botao-largo" type="submit">Confirmar</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

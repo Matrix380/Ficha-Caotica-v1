@@ -1,0 +1,54 @@
+SISTEMA CAÓTICO — COMO ABRIR E MODIFICAR
+
+1. COMO ABRIR
+- Extraia o arquivo ZIP para uma pasta.
+- Abra a pasta.
+- Dê dois cliques em index.html.
+- O site abrirá no navegador.
+- Não precisa instalar nada, contratar hospedagem ou usar IA.
+
+2. ARQUIVOS
+- index.html: conteúdo e estrutura da página.
+- estilo.css: cores, tamanhos, espaçamentos e aparência.
+- script.js: funcionamento dos botões, atributos, vida, inventário etc.
+- imagens/logo-sistema-caotico.png: logotipo usado no cabeçalho.
+
+3. COMO MODIFICAR A APARÊNCIA
+Abra estilo.css em um editor de texto ou no Visual Studio Code.
+No começo do arquivo há variáveis de cores:
+--fundo: cor do fundo;
+--cartao: cor dos cartões;
+--roxo: cor principal;
+--texto: cor dos textos.
+Altere os códigos de cor para personalizar o visual.
+
+4. COMO MODIFICAR OS ATRIBUTOS INICIAIS
+Abra script.js e procure por "const fichaInicial".
+Ali estão os atributos Corpo, Alma, Consciência e Fala, além dos pontos de vida.
+Você pode trocar os nomes e os números.
+
+5. COMO MODIFICAR OS TEXTOS DA PÁGINA
+Abra index.html e procure o texto que deseja trocar.
+Por exemplo, procure "Inventário" para mudar o título dessa área.
+
+6. SOBRE OS NOMES EM PORTUGUÊS
+As classes, IDs, variáveis, funções e comentários criados neste projeto estão em português.
+As palavras como <div>, <section>, <input>, <button> e <form> continuam em inglês porque são nomes oficiais das tags do HTML. Não se deve traduzir essas tags: o navegador não as reconheceria.
+
+7. SOBRE O SALVAMENTO
+Os dados ficam salvos no armazenamento local do navegador (localStorage).
+Isso significa que:
+- O site funciona sem internet depois de baixado.
+- Os dados ficam naquele navegador e naquele computador.
+- Limpar os dados do navegador pode apagar a ficha.
+- Para usar em outro computador, será necessário criar uma função de exportação/importação ou um servidor.
+
+8. DICA PARA ESTUDAR
+Se você está começando:
+- Edite primeiro os textos no index.html.
+- Depois experimente mudar as cores no estilo.css.
+- Por último, estude as funções do script.js.
+O JavaScript está dividido em funções pequenas e tem comentários explicando o que cada parte faz.
+
+IMPORTANTE
+Este projeto não usa inteligência artificial, APIs, banco de dados online ou bibliotecas externas.

@@ -1,0 +1,189 @@
+/* =====================================================
+   SISTEMA CAÓTICO
+   Estilos visuais. Você pode alterar cores, tamanhos,
+   espaços e fontes neste arquivo.
+   ===================================================== */
+
+:root {
+    --fundo: #09070d;
+    --cartao: #15111c;
+    --cartao-escuro: #0c0a11;
+    --borda: #34283f;
+    --roxo: #a56bd1;
+    --roxo-escuro: #74469a;
+    --texto: #eee9f2;
+    --texto-suave: #9c91a5;
+    --vermelho: #d87988;
+    --verde: #83c6a2;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--texto);
+    background: radial-gradient(ellipse at 50% -20%, #24152f 0, transparent 42%), var(--fundo);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Cabeçalho e logotipo */
+.cabecalho {
+    min-height: 86px;
+    padding: 10px clamp(18px, 4vw, 60px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid #2c2234;
+    background: #09070d;
+}
+
+.marca { display: flex; align-items: center; gap: 15px; }
+.marca img { width: 210px; max-height: 70px; object-fit: contain; }
+.marca span, .titulo-pequeno, .rotulo, .contador {
+    color: var(--texto-suave);
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1.7px;
+}
+.marca span { padding-left: 15px; border-left: 1px solid var(--borda); }
+.acoes-cabecalho { display: flex; align-items: center; gap: 18px; }
+.estado-salvamento { color: var(--texto-suave); font-size: 11px; }
+
+/* Organização geral da página */
+.pagina {
+    width: min(1440px, 100%);
+    margin: auto;
+    padding: 30px clamp(16px, 3vw, 42px) 55px;
+    display: grid;
+    grid-template-columns: 310px minmax(0, 1fr);
+    gap: 24px;
+}
+
+.barra-lateral { display: flex; flex-direction: column; gap: 15px; }
+.conteudo-principal { min-width: 0; }
+
+/* Cartões e títulos */
+.cartao {
+    padding: 19px;
+    border: 1px solid var(--borda);
+    border-radius: 11px;
+    background: linear-gradient(145deg, #17131e, #100e16);
+    box-shadow: 0 12px 35px #0003;
+}
+.cartao-identidade { border-top: 2px solid var(--roxo-escuro); }
+.titulo-cartao { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 15px; }
+.titulo-cartao h2, .janela h2 { margin: 0; font-family: Georgia, serif; font-size: 19px; }
+.titulo-pequeno { color: var(--roxo); margin: 0 0 9px; }
+.simbolo { color: var(--roxo); font-size: 22px; }
+.contador { font-size: 8px; }
+
+/* Campos de texto e formulários */
+.rotulo { display: block; margin: 12px 0 6px; letter-spacing: 1.2px; }
+.campo {
+    width: 100%;
+    padding: 10px 11px;
+    color: var(--texto);
+    background: var(--cartao-escuro);
+    border: 1px solid #33283c;
+    border-radius: 6px;
+    font: 12px Arial, sans-serif;
+    outline: none;
+}
+.campo:focus { border-color: var(--roxo); box-shadow: 0 0 0 2px #8c50b51f; }
+.campo::placeholder { color: #675d6e; }
+.nome-personagem { font: 17px Georgia, serif; }
+.campos-lado-a-lado { display: grid; grid-template-columns: 1fr 75px; gap: 10px; }
+.campos-lado-a-lado > div { min-width: 0; }
+textarea.campo { resize: vertical; }
+.explicacao, .ajuda { color: #807587; font-size: 10px; line-height: 1.5; }
+.explicacao { margin: 0 0 12px; }
+.ajuda { margin: 12px 0 0; }
+
+/* Atributos */
+.lista-atributos { display: grid; gap: 9px; }
+.linha-atributo { display: grid; grid-template-columns: 1fr 72px 72px; gap: 7px; align-items: center; }
+.nome-atributo { font: 13px Georgia, serif; }
+.celula-atributo small { display: block; margin-bottom: 4px; text-align: center; color: var(--texto-suave); font-size: 8px; letter-spacing: 1px; }
+.valor-atributo { width: 100%; padding: 8px 4px; color: var(--texto); text-align: center; background: var(--cartao-escuro); border: 1px solid #33283c; border-radius: 5px; }
+
+/* Pontos de vida */
+.numeros-vida { display: flex; justify-content: space-between; align-items: end; }
+.numeros-vida .rotulo { margin: 0 0 5px; }
+.numeros-vida strong { display: block; font: 29px Georgia, serif; }
+.barra-vida { height: 7px; margin: 13px 0; overflow: hidden; border-radius: 9px; background: #33232d; }
+#preenchimentoVida { width: 100%; height: 100%; background: linear-gradient(90deg, #8c4caa, #c17bcf); transition: width .25s; }
+.botoes-vida { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+
+/* Botões */
+.botao { padding: 10px 13px; color: var(--texto); background: #1b1622; border: 1px solid var(--borda); border-radius: 7px; font-size: 11px; font-weight: bold; cursor: pointer; }
+.botao:hover { border-color: var(--roxo); }
+.botao-principal { background: linear-gradient(135deg, #8753ad, #5b3477); border-color: #9765b8; }
+.botao-discreto { color: var(--texto-suave); background: transparent; }
+.botao-dano { color: #f1a3ad; background: #28151d; border-color: #61323e; }
+.botao-cura { color: #a5dfbd; background: #14251d; border-color: #315c48; }
+.botao-texto { color: #b99acb; background: transparent; border: 0; cursor: pointer; font-size: 10px; }
+.botao-largo { width: 100%; margin-top: 15px; }
+
+/* Conteúdo principal */
+.apresentacao { display: flex; justify-content: space-between; align-items: center; padding: 8px 7px 23px; }
+.apresentacao h1 { margin: 0 0 5px; font: 600 clamp(24px, 3vw, 36px) Georgia, serif; }
+.apresentacao p:last-child { margin: 0; color: var(--texto-suave); font-size: 11px; }
+.simbolo-grande { color: #79519a; font-size: 48px; }
+.grade-conteudo { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.formulario-adicionar { display: flex; gap: 7px; }
+.formulario-adicionar .campo { min-width: 0; flex: 1; }
+.campo-quantidade { max-width: 62px; }
+.formulario-empilhado { display: grid; gap: 8px; }
+.formulario-empilhado .botao { justify-self: start; }
+.lista-registros { display: grid; gap: 7px; margin-top: 13px; }
+.vazio { padding: 12px 0; color: #82768a; font-size: 11px; }
+.registro { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 10px; background: var(--cartao-escuro); border: 1px solid #2a2231; border-radius: 6px; }
+.registro-conteudo { min-width: 0; }
+.registro-nome { font-size: 12px; font-weight: bold; }
+.registro-descricao { margin-top: 5px; color: var(--texto-suave); font-size: 10px; line-height: 1.5; white-space: pre-wrap; }
+.registro-quantidade { margin-left: 7px; color: var(--roxo); font-size: 10px; }
+.botao-remover { padding: 0 4px; color: #a98eae; background: transparent; border: 0; font-size: 18px; cursor: pointer; }
+.botao-remover:hover { color: #f09aa7; }
+.lista-condicoes { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+.condicao { display: flex; align-items: center; gap: 8px; padding: 7px 9px; color: #d8b1e9; background: #24172a; border: 1px solid #62405e; border-radius: 5px; font-size: 10px; }
+.condicao button { color: #c4a2d0; background: transparent; border: 0; cursor: pointer; }
+.cartao-anotacoes { grid-column: 1 / -1; }
+.campo-anotacoes { min-height: 105px; line-height: 1.6; }
+.cartao-historico { margin-top: 15px; }
+.lista-historico { display: grid; gap: 7px; }
+.linha-historico { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; color: #b9aebe; border-bottom: 1px solid #2b2332; font-size: 10px; }
+.linha-historico time { color: #766a7e; white-space: nowrap; }
+.frase-lateral { padding: 12px; color: #796784; text-align: center; font: bold 10px/1.8 Georgia, serif; letter-spacing: 2px; }
+.frase-lateral span { color: #51465b; font-size: 8px; }
+.rodape { padding-top: 25px; color: #655a6c; text-align: center; font-size: 8px; letter-spacing: 2px; }
+.rodape span { padding: 0 7px; color: var(--roxo); }
+
+/* Janela de dano e cura */
+.fundo-janela { position: fixed; inset: 0; z-index: 10; display: none; align-items: center; justify-content: center; padding: 20px; background: #050308c9; }
+.fundo-janela.aberta { display: flex; }
+.janela { position: relative; width: min(360px, 100%); }
+.fechar-janela { position: absolute; top: 10px; right: 14px; color: #b9a9c2; background: transparent; border: 0; font-size: 24px; cursor: pointer; }
+
+/* Ajustes para telas menores */
+@media (max-width: 900px) {
+    .pagina { grid-template-columns: 260px minmax(0, 1fr); gap: 14px; }
+    .grade-conteudo { grid-template-columns: 1fr; }
+    .cartao-anotacoes { grid-column: auto; }
+}
+@media (max-width: 650px) {
+    .cabecalho { padding: 10px 15px; }
+    .marca { gap: 8px; }
+    .marca img { width: 145px; }
+    .marca span { padding-left: 8px; font-size: 7px; }
+    .estado-salvamento { display: none; }
+    .pagina { display: flex; flex-direction: column; padding: 15px 12px 35px; }
+    .barra-lateral { display: grid; grid-template-columns: 1fr 1fr; }
+    .cartao-identidade, .barra-lateral > .cartao:nth-child(2) { grid-column: 1 / -1; }
+    .frase-lateral { display: none; }
+    .grade-conteudo { grid-template-columns: 1fr; }
+    .cartao { padding: 15px; }
+    .linha-atributo { grid-template-columns: 1fr 65px 65px; }
+    .numeros-vida strong { font-size: 25px; }
+}
